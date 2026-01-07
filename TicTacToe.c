@@ -10,11 +10,13 @@ int checkWin(char b[3][3],int* x)
                 if(b[i][1]=='X')
                 {
                     printf("\nplayer 1 is won\n");
+                   
                     *x=1;
                 }
                 if(b[i][1]=='O')
                 {
                     printf("\nplayer 2 is won\n");
+
                     *x=1;
                 }
                 break;
@@ -101,8 +103,9 @@ display(arr);
 entry(arr,i);
 checkWin(arr,&x);
 if(x==1)
-{
-    break;
+{ printf("\n");
+  display(arr);
+ break;
 }
 }
 }
