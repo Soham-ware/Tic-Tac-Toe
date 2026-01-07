@@ -1,4 +1,69 @@
 #include<stdio.h>
+int checkWin(char b[3][3],int* x)
+{
+    int i;
+
+    for(i = 0; i < 3; i++)
+    {
+        if(b[i][0] == b[i][1] && b[i][1] == b[i][2] && b[i][0] != ' ')
+            {
+                if(b[i][1]=='X')
+                {
+                    printf("\nplayer 1 is won\n");
+                    *x=1;
+                }
+                if(b[i][1]=='O')
+                {
+                    printf("\nplayer 2 is won\n");
+                    *x=1;
+                }
+                break;
+            }
+    }
+
+    for(i = 0; i < 3; i++)
+    {
+        if(b[0][i] == b[1][i] && b[1][i] == b[2][i] && b[0][i] != ' ')
+            {
+                 if(b[1][i]=='X')
+                {
+                    printf("\nplayer 1 is won\n");*x=1;
+                }
+                if(b[1][i]=='O')
+                {
+                    printf("\nplayer 2 is won\n");*x=1;
+                }
+                break;
+            }
+    }
+    if(b[0][0] == b[1][1] && b[1][1] == b[2][2] && b[0][0] != ' ')
+    {
+       if(b[0][0]=='X')
+       {
+        printf("\nplayer 1 won the match\n");*x=1;
+       }     
+       else{
+        printf("\nPlayer 2 won the match\n");*x=1;
+       }
+       
+    }
+
+            
+    if(b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2] != ' ')
+      {
+       if(b[0][0]=='X')
+       {
+        printf("\nplayer 1 won the match\n");*x=1;
+       }     
+       else{
+        printf("\nPlayer 2 won the match\n");*x=1;
+       }
+       
+    }
+
+    return 0; 
+}
+
 void entry(char arr[3][3],int i)
 {
 int a,b;
@@ -28,72 +93,16 @@ printf(" %c | %c | %c \n",a[2][0],a[2][1],a[2][2]);
 void game(){
 printf("Tic Tac Toe\n");
 char arr[3][3]={{' ',' ', ' '},{' ',' ', ' '},{' ',' ', ' '}};
+
 for(int i=1;i<=9;i++)
-{
+{int x;
+char a[3];
 display(arr);
 entry(arr,i);
-if(((arr[0][0]==arr[0][1])&&(arr[0][0]==arr[0][2])&&(arr[0][0]=='X'))||((arr[0][0]==arr[0][1])&&(arr[0][0]==arr[0][2])&&(arr[0][0]=='O')))
-{   display(arr);
-    if(arr[0][0]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[0][0]=='O'){
-    printf("Player 2 Won ");    
-    break;}
-}
-if(((arr[1][0]==arr[1][1])&&(arr[1][0]==arr[1][2])&&(arr[1][0]=='X'))||((arr[1][0]==arr[1][1])&&(arr[1][0]==arr[1][2])&&(arr[1][0]=='O')))
-{   display(arr);
-   if(arr[1][0]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[1][0]=='O'){
-    printf("Player 2 Won ");    
-    break;}
-}
-if(((arr[2][0]==arr[2][1])&&(arr[2][0]==arr[2][2])&&(arr[2][0]=='X'))||((arr[2][0]==arr[2][1])&&(arr[2][0]==arr[2][2])&&(arr[2][0]=='O')))
-{   display(arr);
-   if(arr[2][0]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[2][0]=='O'){
-    printf("Player 2 Won ");    
-    break;}
-}
-if(((arr[0][0]==arr[1][0])&&(arr[2][0]==arr[1][0])&&(arr[1][0]=='X'))||((arr[0][0]==arr[1][0])&&(arr[2][0]==arr[1][0])&&(arr[0][0]=='O')))
-{   display(arr);
-    if(arr[0][0]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[0][0]=='O'){
-    printf("Player 2 Won ");    
-    break;}
-}
-if(((arr[1][1]==arr[2][1])&&(arr[0][1]==arr[2][1])&&(arr[1][1]=='X'))||((arr[0][1]==arr[1][1])&&(arr[2][0]==arr[1][1])&&(arr[1][1]=='O')))
-{   display(arr);
-   if(arr[1][1]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[1][1]=='O'){
-    printf("Player 2 Won ");    
-    break;}
-}
-if(((arr[1][1]==arr[2][2])&&(arr[0][0]==arr[2][2])&&(arr[2][2]=='X'))||((arr[1][1]==arr[0][0])&&(arr[0][0]==arr[2][2])&&(arr[2][2]=='O')))
-{   display(arr);
-   if(arr[2][2]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[2][2]=='O'){
-    printf("Player 2 Won ");    
-    break;}
-}
-if(((arr[1][1]==arr[0][2])&&(arr[1][1]==arr[2][0])&&(arr[1][1]=='X'))||((arr[1][1]==arr[0][2])&&(arr[1][1]==arr[2][0])&&(arr[1][1]=='O')))
-{   display(arr);
-   if(arr[1][1]=='X'){
-    printf("Player 1 Won ");    
-    break;}
-    if(arr[1][1]=='O'){
-    printf("Player 2 Won ");    
-    break;}
+checkWin(arr,&x);
+if(x==1)
+{
+    break;
 }
 }
 }
