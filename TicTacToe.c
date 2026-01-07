@@ -51,7 +51,7 @@ int checkWin(char b[3][3],int* x)
             
     if(b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2] != ' ')
       {
-       if(b[0][0]=='X')
+       if(b[0][2]=='X')
        {
         printf("\nplayer 1 won the match\n");*x=1;
        }     
@@ -95,7 +95,7 @@ printf("Tic Tac Toe\n");
 char arr[3][3]={{' ',' ', ' '},{' ',' ', ' '},{' ',' ', ' '}};
 
 for(int i=1;i<=9;i++)
-{int x;
+{int x=0;
 char a[3];
 display(arr);
 entry(arr,i);
