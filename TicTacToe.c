@@ -66,20 +66,31 @@ int checkWin(char b[3][3],int* x)
     return 0; 
 }
 
-void entry(char arr[3][3],int i)
+void entry(char arr[3][3],int i,int* y)
 {
 int a,b;
 
 if(i%2!=0){
 printf("Enter a co-ordinate Player 1\t");
 scanf("%d%d",&a,&b);
+if(arr[a][b]==' '){
 arr[a][b]='X';
+}
+else{
+*y=1;
+}
 }
 if(i%2==0)
 {
 printf("Enter a co-ordinate Player 2\t");
 scanf("%d%d",&a,&b);
-arr[a][b]='O';
+if(arr[a][b]==' ')
+{
+    arr[a][b]='O';
+}
+else{
+*y=1;
+}
 }
 }
 
@@ -97,15 +108,20 @@ printf("Tic Tac Toe\n");
 char arr[3][3]={{' ',' ', ' '},{' ',' ', ' '},{' ',' ', ' '}};
 
 for(int i=1;i<=9;i++)
-{int x=0;
+{int x=0,y=0;
 char a[3];
 display(arr);
-entry(arr,i);
+entry(arr,i,&y);
 checkWin(arr,&x);
 if(x==1)
 { printf("\n");
   display(arr);
  break;
+}
+if(y==1)
+{
+    i=i-1;
+    printf("\nInvalid input try again\n");
 }
 }
 }
