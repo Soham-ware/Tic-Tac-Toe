@@ -97,6 +97,12 @@ else{
 *y=1;
 }
 }
+if(a < 0 || a > 2 || b < 0 || b > 2) {
+    printf("Please enter valid input");
+    *y = 1;
+    return;
+}
+
 }
 
 void display(char a[3][3])
